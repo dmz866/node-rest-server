@@ -2,28 +2,20 @@
 
  const express = require('express');
  const app = express();
+ const mongoose = require('mongoose');
+
  const bodyParser = require('body-parser');
 
  app.use(bodyParser.urlencoded({ extended: false }));
  app.use(bodyParser.json());
 
- app.get('/', (request, response) => {
+ app.use(require('./routes/usuario'));
 
- });
-
- app.post('/usuario', (request, response) => {
-     let body = request.body;
-
-     if (body.name === undefined) {
-         return response.status(400).json({
-             ok: false,
-             message: 'Nombre es necesario'
-         });
-     } else {
-         return response.json({
-             persona: body
-         });
+ mongoose.connect('mongodb://localhost:27017/cafe', (err, res) => {
+     if (err) {
+         throw err;
      }
+     console.log('BDD ONLINE');
  });
 
  app.listen(3000, (error) => {
