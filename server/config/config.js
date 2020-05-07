@@ -8,5 +8,9 @@ if (process.env.NODE_ENV === 'dev') {
 } else {
     urlDB = 'mongodb+srv://admin:Q1KASRMbkoSwyrKV@cluster0-awerm.mongodb.net/cafe';
 }
-urlDB = 'mongodb+srv://admin:Q1KASRMbkoSwyrKV@cluster0-awerm.mongodb.net/cafe';
+
 process.env.URL_DB = urlDB;
+
+// TOKEN
+process.env.CADUCIDAD_TOKEN = 60 * 60 * 24 * 30;
+process.env.SEED = process.env.SEED || 'este-es-el-seed-desarrollo';
