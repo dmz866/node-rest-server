@@ -1,4 +1,5 @@
 const express = require('express');
+const _ = require('underscore');
 
 let { verificarToken, verificarAdminRole } = require('../middlewares/autenticacion');
 let app = express();
@@ -6,18 +7,19 @@ let Categoria = require('../models/categoria');
 
 app.get('/categoria', verificarToken, (request, response) => {
     Categoria.find((error, categorias) => {
-        if (error) {
-            return response.status(400).json({
-                ok: false,
-                error
-            });
-        }
+            if (error) {
+                return response.status(400).json({
+                    ok: false,
+                    error
+                });
+            }
 
-        return response.json({
-            ok: true,
-            categorias
-        });
-    });
+            return response.json({
+                ok: true,
+                categorias
+            });
+        }).populate('usuario', 'nombre email')
+        .sort('descripcion');
 });
 
 app.get('/categoria/:id', verificarToken, (request, response) => {
@@ -34,16 +36,16 @@ app.get('/categoria/:id', verificarToken, (request, response) => {
             ok: true,
             categoria: categoriaDB
         });
-    });
+    }).populate('usuario', 'nombre email');
 });
 
 app.post('/categoria', verificarToken, (request, response) => {
     let body = request.body;
-    body.usuario = req.usuario._id;
+    body.usuario = request.usuario._id;
 
-    Categoria.save(body, (error, categoriaDB) => {
+    Categoria.create(body, (error, categoriaDB) => {
         if (error) {
-            return response.status(400).json({
+            return response.status(500).json({
                 ok: false,
                 error
             });
@@ -56,11 +58,12 @@ app.post('/categoria', verificarToken, (request, response) => {
     });
 });
 
-app.put('/categoria', verificarToken, (request, response) => {
+app.put('/categoria/:id', verificarToken, (request, response) => {
+    let id = request.params.id;
     let body = request.body;
-    body.usuario = request.usuario._id;
+    body = _.pick(body, ['descripcion']);
 
-    Categoria.findByIdAndUpdate(body, 'descripcion', (error, categoriaDB) => {
+    Categoria.findByIdAndUpdate(id, body, { new: true, runValidators: true }, (error, categoriaDB) => {
         if (error) {
             return response.status(400).json({
                 ok: false,

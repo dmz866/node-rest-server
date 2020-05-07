@@ -5,7 +5,7 @@ function verificarToken(request, response, next) {
 
     jwt.verify(token, process.env.SEED, (error, decoded) => {
         if (error) {
-            return res.status(401).json({
+            return response.status(401).json({
                 ok: false,
                 error
             });
@@ -21,7 +21,7 @@ function verificarAdminRole(request, response, next) {
     let usuario = request.usuario;
 
     if (usuario.role !== 'ADMIN_ROLE') {
-        return res.status(400).json({
+        return response.status(400).json({
             ok: false,
             error: {
                 message: 'Usuario no es Admin'
