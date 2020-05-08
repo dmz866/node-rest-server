@@ -1,0 +1,89 @@
+Miscellaneous accessorial calculation
+
+MiscAccCharge: AccessorialCharge - ExtendedDelCharge - ResidentialCharge - DeclaredValueCharge - HazMatCharge - EarlyAmCharge - LargePackageCharge - SatDelCharge - AdditionalHandlingCharge - AddressCorrectionCharge - InvalidAccountCharge - LatePaymentCharge
+
+
+Accessorial Charges
+
+- AccessorialCharge: 
+ImportedAsShippedItem: 0 and (ChargeTypeCode: 'ACC' or AccessorialChargeID is null)
+
+- ExtendedDelCharge: 
+CarrierCode: 'UPSC' 
+AccessorialChargeCode: '010', '260', 'DEL', 'FCD', 'DTC', 'LDC', 'RDC', 'RDR', 'HRC', 'LDR', 'BDC', 'BDR', 'BDS', 'CAC', 'CAR', 'DDS', 'HBC', 'HBR', 'HCC', 'HCR', 'HPC', 'HPR', 'HRR', 'HSC', 'HSR', 'HUC', 'HUR', 'LDS', 'SDC', 'SDR', 'UDC', 'UDR', '045', '685', 'ESC', 'NHB', 'DCT'
+
+CarrierCode: 'FEDX' 
+AccessorialChargeCode: '043', '230', '492', '493', '494', '639', '640'
+
+- ResidentialCharge
+CarrierCode: 'UPSC' 
+AccessorialChargeCode: 'FCB', 'RCA', 'REE', 'REP', 'RES', 'HRS', 'RS1', 'RJ5', 'FRD'
+
+CarrierCode: 'FEDX' 
+AccessorialChargeCode: '022', '027', '028', '273', '274', '276', '277'
+
+- DeclaredValueCharge:
+CarrierCode: 'UPSC' 
+AccessorialChargeCode: 'EVC', 'SSL', 'EVS', 'DVS'
+
+CarrierCode: 'FEDX'
+AccessorialChargeCode: '001', '264'
+
+- HazMatCharge
+CarrierCode: 'UPSC' 
+AccessorialChargeCode: 'HAN', 'HAZ', 'ICE', '040', 'HIC'
+ 
+AccessorialChargeCode:'AAJ' 
+SpecialChargeDescription:'008', '065' 
+		
+CarrierCode: 'FEDX' 
+AccessorialChargeCode: '275', '285'
+
+- EarlyAmCharge 
+CarrierCode: 'UPSC' 
+AccessorialChargeCode: 'SUC', 'SUR'
+
+- LargePackageCharge
+CarrierCode: 'UPSC' 
+AccessorialChargeCode: 'LDG', 'LGD', 'LPS', 'OML', 'OPS'
+
+CarrierCode: 'FEDX' 
+AccessorialChargeCode: '213', '269', '346', '495'
+		
+- SatDelCharge
+CarrierCode: 'UPSC' 
+AccessorialChargeCode: '665', 'SAT', 'FLT'
+
+AccessorialChargeCode: 'AAJ' 
+SpecialChargeDescription: '009', '049'
+
+CarrierCode: 'FEDX' 
+AccessorialChargeCode: '002'
+		
+- AdditionalHandlingCharge		
+CarrierCode: 'UPSC' 
+AccessorialChargeCode: '690', 'AHC', 'SPA'
+
+CarrierCode: 'FEDX' 
+AccessorialChargeCode: '268', '312', '685', '686', '687', '688'
+
+- AddressCorrectionCharge
+CarrierCode: 'UPSC' 
+AccessorialChargeCode: '020', 'ADC', 'PRD'
+
+AccessorialChargeCode: 'AAJ'
+SpecialChargeDescription: '007'
+
+CarrierCode: 'FEDX'
+AccessorialChargeCode: '007', '272', '291'
+		
+- InvalidAccountCharge
+CarrierCode: 'UPSC' 
+AccessorialChargeCode: '505', 'CHBK', 'LSC'
+
+CarrierCode: 'FEDX' 
+AccessorialChargeCode: '004', '019', '020', '219', '517', '518'
+
+- LatePaymentCharge
+CarrierCode: 'UPSC' 
+AccessorialChargeCode: 'LPC', 'FFI'
